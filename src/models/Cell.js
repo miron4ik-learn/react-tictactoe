@@ -3,6 +3,7 @@ export default class Cell {
     this.board = board
     this.index = index
     this.figure = null
+    this.active = false
   }
 
   isEmpty() {

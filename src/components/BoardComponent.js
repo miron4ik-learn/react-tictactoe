@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { FigureNames } from '../models/figures/Figure'
 import CellComponent from './CellComponent'
 
@@ -7,12 +7,25 @@ const BoardComponent = ({
   setBoard,
   currentPlayer,
   swapPlayer,
+  setResult,
 }) => {
   const audioCross = useRef(null)
   const audioCircle = useRef(null)
 
+  useEffect(() => {
+    const win = board.win()
+
+    if(win === 'cross') {
+      setResult('Побелили X!')
+    } else if(win === 'circle') {
+      setResult('Победили O!')
+    } else if(win === 'draw') {
+      setResult('Ничья!')
+    }
+  }, [board])
+
   const click = (cell) => {
-    if(cell.isEmpty()) {
+    if(cell.isEmpty() && !board.end) {
       const figure = new currentPlayer.classFigure(cell)
       cell.setFigure(figure)
 

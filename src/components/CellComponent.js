@@ -1,6 +1,6 @@
 const CellComponent = ({ click, cell }) => {
   return (
-    <div className='cell' onClick={() => click(cell)}>
+    <div className={[ 'cell', cell.active ? 'active' : '' ].join(' ')} onClick={() => click(cell)}>
       {cell?.figure?.logo}
     </div>
   )

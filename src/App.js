@@ -5,12 +5,14 @@ import Cross from './models/figures/Cross'
 import Circle from './models/figures/Circle'
 import './App.css'
 import BoardComponent from './components/BoardComponent'
+import Result from './components/Result'
 
 function App() {
   const [ board, setBoard ] = useState(new Board())
+  const [ result, setResult ] = useState('')
 
-  const [ crossPlayer, setCrossPlayer ] = useState(new Player(Cross))
-  const [ circlePlayer, setCirclePlayer ] = useState(new Player(Circle))
+  const [ crossPlayer ] = useState(new Player(Cross))
+  const [ circlePlayer ] = useState(new Player(Circle))
   const [ currentPlayer, setCurrentPlayer ] = useState(null)
 
   useEffect(() => {
@@ -33,11 +35,14 @@ function App() {
 
   return (
     <div className="app">
+      <Result text={result} />
+
       <BoardComponent
         board={board}
         setBoard={setBoard}
         currentPlayer={currentPlayer}
-        swapPlayer={swapPlayer} />
+        swapPlayer={swapPlayer}
+        setResult={setResult} />
     </div>
   )
 }
