@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+import { FigureNames } from '../models/figures/Figure'
 import CellComponent from './CellComponent'
 
 const BoardComponent = ({
@@ -6,10 +8,20 @@ const BoardComponent = ({
   currentPlayer,
   swapPlayer,
 }) => {
+  const audioCross = useRef(null)
+  const audioCircle = useRef(null)
+
   const click = (cell) => {
     if(cell.isEmpty()) {
       const figure = new currentPlayer.classFigure(cell)
       cell.setFigure(figure)
+
+      if(figure.name === FigureNames.CROSS) {
+        audioCross.current.play()
+      } else {
+        audioCircle.current.play()
+      }
+
       swapPlayer()
       updateBoard()
     }
@@ -22,6 +34,9 @@ const BoardComponent = ({
 
   return (
     <div className='board'>
+      <audio ref={audioCross} src='cross.mp3' />
+      <audio ref={audioCircle} src='circle.mp3' />
+
       {board.cells.map(cell =>
         <CellComponent
           click={click}
