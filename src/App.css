@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background:
+    linear-gradient(rgba(0, 0, 0, .4), transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, .4), transparent 1px);
+  background-size: 30px 30px;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
