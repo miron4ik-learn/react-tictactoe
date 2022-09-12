@@ -4,4 +4,12 @@ export default class Cell {
     this.index = index
     this.figure = null
   }
+
+  isEmpty() {
+    return this.figure === null
+  }
+
+  setFigure(figure) {
+    this.figure = figure
+  }
 }

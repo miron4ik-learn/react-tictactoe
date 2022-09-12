@@ -1,6 +1,6 @@
-const CellComponent = ({ cell }) => {
+const CellComponent = ({ click, cell }) => {
   return (
-    <div className='cell'>
+    <div className='cell' onClick={() => click(cell)}>
       {cell?.figure?.logo}
     </div>
   )

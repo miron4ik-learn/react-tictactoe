@@ -12,4 +12,10 @@ export default class Board {
       )
     }
   }
+
+  getCopyBoard() {
+    const newBoard = new Board()
+    newBoard.cells = this.cells
+    return newBoard
+  }
 }
