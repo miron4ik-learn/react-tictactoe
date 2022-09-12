@@ -33,6 +33,12 @@ function App() {
     setBoard(newBoard)
   }
 
+  const newGame = () => {
+    setCurrentPlayer(crossPlayer)
+    setResult('')
+    restart()
+  }
+
   return (
     <div className="app">
       <Result text={result} />
@@ -43,6 +49,8 @@ function App() {
         currentPlayer={currentPlayer}
         swapPlayer={swapPlayer}
         setResult={setResult} />
+
+      <button className='new-game' onClick={newGame}>Новая игра</button>
     </div>
   )
 }
